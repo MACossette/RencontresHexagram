@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="fieldparams">
+		<fieldset name="fieldparams">
+			<field name="width" type="text"
+				label="NR_WIDTH"
+				description="ACF_WIDTH_DESC"
+				hint="400"
+				class="input-small"
+			/>
+			<field name="height" type="text"
+				label="NR_HEIGHT"
+				description="ACF_HEIGHT_DESC"
+				hint="auto"
+				class="input-small"
+			/>
+			<field name="autoplay" type="radio" 
+		        label="ACF_AUTOPLAY"
+				description="ACF_AUTOPLAY_DESC"
+		        class="btn-group btn-group-yesno"
+		        default="0">
+		            <option value="1">JYES</option>
+		            <option value="0">JNO</option>
+		    </field>
+		    <field name="controls" type="radio" 
+		        label="ACF_CONTROLS"
+				description="ACF_CONTROLS_DESC"
+		        class="btn-group btn-group-yesno"
+		        default="1">
+		            <option value="1">JYES</option>
+		            <option value="0">JNO</option>
+		    </field>
+		    <field name="loop" type="radio" 
+		        label="ACF_LOOP"
+				description="ACF_LOOP_DESC"
+		        class="btn-group btn-group-yesno"
+		        default="0">
+		            <option value="1">JYES</option>
+		            <option value="0">JNO</option>
+		    </field>
+		    <field name="muted" type="radio" 
+		        label="ACF_MUTED"
+				description="ACF_MUTED_DESC"
+		        class="btn-group btn-group-yesno"
+		        default="0">
+		            <option value="1">JYES</option>
+		            <option value="0">JNO</option>
+		    </field>
+		    <field name="preload" type="list" 
+		        label="ACF_PRELOAD"
+				description="ACF_PRELOAD_DESC"
+		        class="btn-group btn-group-yesno"
+		        default="auto">
+		            <option value="metadata">ACF_METADATA</option>
+		            <option value="auto">NR_AUTO</option>
+		            <option value="none">JNONE</option>
+		    </field>
+		</fieldset>
+	</fields>
+</form>

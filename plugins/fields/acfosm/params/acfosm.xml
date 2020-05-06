@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="fieldparams">
+		<fieldset name="fieldparams">
+            <field type="spacer" name="label"
+				label="NR_FRONTEND"
+				class="acf"
+			/>
+			<field name="width" type="text"
+				label="ACF_OSM_WIDTH"
+				description="ACF_OSM_WIDTH_DESC"
+				default="400px"
+			/>
+			<field name="height" type="text"
+				label="ACF_OSM_HEIGHT"
+				description="ACF_OSM_HEIGHT_DESC"
+				default="350px"
+			/>
+			<field name="zoom" type="nrnumber"
+				label="ACF_OSM_ZOOM"
+				description="ACF_OSM_ZOOM_DESC"
+				default="13"
+			/>
+            <field type="spacer" name="label2"
+				label="NR_BACKEND"
+				class="acf"
+			/>
+			<field name="show_address_input" type="radio" 
+				label="ACF_OSM_SHOW_ADDRESS"
+				description="ACF_OSM_SHOW_ADDRESS_DESC"
+				default="1"
+				class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="fieldparams">
+		<fieldset name="fieldparams">
+		    <field name="widget_type" type="list" 
+		        label="ACF_TWITTER_WIDGET"
+				description="ACF_TWITTER_WIDGET_DESC"
+		        class="btn-group btn-group-yesno"
+		        default="follow">
+		            <option value="follow">ACF_TWITTER_FOLLOW</option>
+		    </field>
+			<fields name="follow" showon="fieldparams.widget_type:follow">
+				<field name="large_button" type="radio" 
+					label="ACF_TWITTER_LB"
+					description="ACF_TWITTER_LB_DESC"
+					class="btn-group btn-group-yesno"
+					showon="fieldparams.widget_type:follow"
+					default="1">
+						<option value="0">JNO</option>
+						<option value="1">JYES</option>
+				</field>
+				<field name="show_username" type="radio" 
+					label="ACF_TWITTER_SU"
+					description="ACF_TWITTER_SU_DESC"
+					class="btn-group btn-group-yesno"
+					showon="fieldparams.widget_type:follow"
+					default="1">
+						<option value="0">JNO</option>
+						<option value="1">JYES</option>
+				</field>
+				<field name="show_count" type="radio" 
+					label="ACF_TWITTER_SC"
+					description="ACF_TWITTER_SC_DESC"
+					class="btn-group btn-group-yesno"
+					showon="fieldparams.widget_type:follow"
+					default="1">
+						<option value="0">JNO</option>
+						<option value="1">JYES</option>
+				</field>
+			</fields>
+		</fieldset>
+	</fields>
+</form>
+
