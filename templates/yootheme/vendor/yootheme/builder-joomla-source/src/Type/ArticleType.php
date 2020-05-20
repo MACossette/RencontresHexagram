@@ -90,6 +90,9 @@ class ArticleType
                     'show_category' => [
                         'type' => 'Boolean',
                     ],
+                    'date_format' => [
+                        'type' => 'String',
+                    ],
                 ],
                 'metadata' => [
                     'label' => 'Meta',
@@ -131,6 +134,7 @@ class ArticleType
                             'default' => true,
                             'text' => 'Show date',
                         ],
+
                         'show_author' => [
                             'type' => 'checkbox',
                             'default' => true,
@@ -141,7 +145,24 @@ class ArticleType
                             'default' => true,
                             'text' => 'Show category',
                         ],
-
+                        'date_format' => [
+                            'label' => 'Date Format',
+                            'description' => 'Select a predefined date format or enter a custom format.',
+                            'type' => 'data-list',
+                            'default' => '',
+                            'options' => [
+                                'Aug 6, 1999 (M j, Y)' => 'M j, Y',
+                                'August 06, 1999 (F d, Y)' => 'F d, Y',
+                                '08/06/1999 (m/d/Y)' => 'm/d/Y',
+                                '08.06.1999 (m.d.Y)' => 'm.d.Y',
+                                '6 Aug, 1999 (j M, Y)' => 'j M, Y',
+                                'Tuesday, Aug 06 (l, M d)' => 'l, M d',
+                            ],
+                            'enable' => 'arguments.show_publish_date',
+                            'attrs' => [
+                                'placeholder' => 'Default',
+                            ],
+                        ],
                     ],
                 ],
             ],
@@ -196,7 +217,7 @@ class ArticleType
             'images' => [
                 'type' => 'ArticleImages',
                 'metadata' => [
-                    'label' => 'Images',
+                    'label' => '',
                 ],
             ],
 
@@ -217,7 +238,7 @@ class ArticleType
             'urls' => [
                 'type' => 'ArticleUrls',
                 'metadata' => [
-                    'label' => 'Urls',
+                    'label' => 'Link',
                 ],
             ],
 
@@ -356,7 +377,7 @@ class ArticleType
 
     public function metaString($article, array $args)
     {
-        $args += ['format' => 'list', 'separator' => '|', 'link_style' => '', 'show_publish_date' => true, 'show_author' => true, 'show_category' => true];
+        $args += ['format' => 'list', 'separator' => '|', 'link_style' => '', 'show_publish_date' => true, 'show_author' => true, 'show_category' => true, 'date_format' => ''];
 
         return app(View::class)->render(Path::get('../../templates/meta'), compact('article', 'args'));
     }

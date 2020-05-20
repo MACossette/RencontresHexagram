@@ -23,7 +23,7 @@ if ($args['show_author']) {
 
 // Publish date
 if ($args['show_publish_date']) {
-    $published = HTMLHelper::_('date', $article->publish_up, Text::_('DATE_FORMAT_LC3'));
+    $published = HTMLHelper::_('date', $article->publish_up, $args['date_format'] ?: Text::_('DATE_FORMAT_LC3'));
     $published = '<time datetime="' . HTMLHelper::_('date', $article->publish_up, 'c') . "\">{$published}</time>";
 }
 

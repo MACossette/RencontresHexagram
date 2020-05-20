@@ -14,10 +14,11 @@ class ArticleHelper
      * Gets the articles.
      *
      * @param int[] $ids
+     * @param array $args
      *
      * @return CMSObject[]
      */
-    public static function get($ids)
+    public static function get($ids, array $args = [])
     {
         if (!class_exists('ContentModelArticles')) {
             require_once JPATH_ROOT . '/components/com_content/models/articles.php';
@@ -29,6 +30,10 @@ class ArticleHelper
         $model->setState('filter.access', true);
         $model->setState('filter.published', 1);
         $model->setState('filter.language', Multilanguage::isEnabled());
+
+        foreach ($args as $name => $value) {
+            $model->setState($name, $value);
+        }
 
         $articles = $model->getItems();
 

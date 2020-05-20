@@ -37,7 +37,7 @@ class SourceTransform
      * @param callable $filter
      * @param int      $offset
      */
-    public function addFilter($name, callable $filter, $offset = PHP_INT_MAX)
+    public function addFilter($name, callable $filter, $offset = null)
     {
         Arr::splice($this->filters, $offset, 0, [$name => $filter]);
     }

@@ -22,7 +22,9 @@ $list = $this->el('ul', [
     <?php if ($props['pagination_type'] == 'numeric') : ?>
 
         <?php foreach ($pagination as $key => $page) : ?>
-            <?php if (!$page->active) : ?>
+            <?php if ($page->active) : ?>
+                <li class="uk-active"><span><?= $page->text ?></span></li>
+            <?php elseif ($page->link) : ?>
                 <li>
                     <?php if (in_array($key, ['previous', 'next'], true)) : ?>
                         <a href="<?= $page->link ?>" title="<?= $page->text ?>">
@@ -33,7 +35,7 @@ $list = $this->el('ul', [
                     <?php endif ?>
                 </li>
             <?php else : ?>
-                <li class="uk-active"><span><?= $page->text ?></span></li>
+                <li class="uk-disabled"><span><?= $page->text ?></span></li>
             <?php endif ?>
         <?php endforeach ?>
 

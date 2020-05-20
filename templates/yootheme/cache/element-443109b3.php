@@ -26,11 +26,6 @@ return [
         'Numeric' => 'numeric'
       ]
     ], 
-    'pagination_start_end' => [
-      'type' => 'checkbox', 
-      'text' => 'Show Start/End links', 
-      'enable' => 'pagination_type == \'numeric\''
-    ], 
     'pagination_space_between' => [
       'type' => 'checkbox', 
       'text' => 'Show space between links', 
@@ -74,7 +69,7 @@ return [
           'fields' => [[
               'label' => 'Pagination', 
               'type' => 'group', 
-              'fields' => ['pagination_type', 'pagination_start_end', 'pagination_space_between']
+              'fields' => ['pagination_type', 'pagination_space_between']
             ], [
               'label' => 'General', 
               'type' => 'group', 

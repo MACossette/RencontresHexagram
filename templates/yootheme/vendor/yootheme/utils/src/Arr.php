@@ -466,6 +466,46 @@ abstract class Arr
     }
 
     /**
+     * Chunks an array evenly into columns.
+     *
+     * @param array $array
+     * @param int   $columns
+     *
+     * @return array
+     *
+     * @example
+     * $array = [1, 2, 3, 4, 5];
+     *
+     * Arr::chunk($array, 2);
+     * // => [[1, 2, 3], [4, 5]]
+     *
+     * Arr::chunk($array, 4);
+     * // => [[1, 2], [3], [4], [5]]
+     */
+    public static function columns($array, $columns)
+    {
+        $count = count($array);
+        $columns = min($count, $columns);
+        $rows = ceil($count / $columns);
+        $remainder = $count % $columns;
+
+        if (!$remainder) {
+            return array_chunk($array, $rows);
+        }
+
+        $result = [];
+        for ($i = 0; $i < $columns; $i++) {
+            $result[] = array_slice(
+                $array,
+                $i * $rows - ($remainder ? max($i - $remainder, 0) : 0),
+                $rows - ($remainder && $i >= $remainder ? 1 : 0)
+            );
+        }
+
+        return $result;
+    }
+
+    /**
      * Checks if the given key exists.
      *
      * @param array|\ArrayAccess $array
@@ -517,10 +557,10 @@ abstract class Arr
     /**
      * Removes a portion of the array and replaces it with something else, preserving keys.
      *
-     * @param array $array
-     * @param int   $offset
-     * @param int   $length
-     * @param mixed $replacement
+     * @param array    $array
+     * @param int|null $offset
+     * @param int|null $length
+     * @param mixed    $replacement
      *
      * @return array
      *
@@ -535,13 +575,11 @@ abstract class Arr
      */
     public static function splice(&$array, $offset, $length, $replacement)
     {
-        $result = array_slice($array, 0, $offset, true);
-
-        if ($replacement) {
-            $result = array_merge($result, is_array($replacement) ? $replacement : [$replacement]);
-        }
-
-        $array = array_merge($result, array_slice($array, $offset + $length, null, true));
+        $array = array_merge(
+            array_slice($array, 0, $offset, true),
+            is_array($replacement) ? $replacement : ($replacement !== null ? [$replacement] : []),
+            array_slice($array, ($offset !== null ? $offset : count($array)) + $length, null, true)
+        );
     }
 
     /**

@@ -201,17 +201,18 @@ class Builder
      *
      * @param string   $context
      * @param callable $transform
-     * @param int      $offset
+     * @param int|null $offset
      *
      * @return $this
      */
-    public function addTransform($context, callable $transform, $offset = PHP_INT_MAX)
+    public function addTransform($context, callable $transform, $offset = null)
     {
         if (!isset($this->transforms[$context])) {
             $this->transforms[$context] = [];
         }
 
-        array_splice($this->transforms[$context], $offset, 0, [$transform]);
+        Arr::splice($this->transforms[$context], $offset, 0, [$transform]);
+
         $this->resolved = [];
 
         return $this;

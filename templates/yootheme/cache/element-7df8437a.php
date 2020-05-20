@@ -11,7 +11,9 @@ return [
   ], 
   'placeholder' => [
     'props' => [
-      'content' => 'Button'
+      'content' => 'Button', 
+      'link' => '#', 
+      'icon' => ''
     ]
   ], 
   'templates' => [

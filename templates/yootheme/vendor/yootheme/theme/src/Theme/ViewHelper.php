@@ -339,7 +339,12 @@ class ViewHelper
                 }, $query), '', '&') : '';
             }
 
-            unset($attrs['width'], $attrs['height'], $attrs['uk-svg']);
+            // remove width/height for local images with "srcset"
+            if (!filter_var($attrs['src'], FILTER_VALIDATE_URL)) {
+                unset($attrs['width'], $attrs['height']);
+            }
+
+            unset($attrs['uk-svg']);
         }
 
         // use lazy loading?

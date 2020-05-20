@@ -2,6 +2,7 @@
 
 namespace YOOtheme;
 
+use Joomla\CMS\Language\Text;
 use Joomla\CMS\Pagination\PaginationObject;
 
 return [
@@ -10,6 +11,7 @@ return [
 
         'render' => function ($node, $params) {
 
+            // Single Article
             if (!isset($params['pagination'])) {
 
                 $article = isset($params['item'])
@@ -35,59 +37,73 @@ return [
                     $plugin->onContentBeforeDisplay('com_content.article', $article, $p, 0);
                 }
 
-                if (isset($article->pagination)) {
-                    $list = [
-                        'previous' => [
-                            'active' => (bool) $article->prev,
-                            'data' => new PaginationObject($article->prev_label, '', null, $article->prev, true),
-                        ],
-                        'next' => [
-                            'active' => (bool) $article->next,
-                            'data' => new PaginationObject($article->next_label, '', null, $article->next, true),
-                        ],
-                    ];
-                } else {
+                if (!isset($article->pagination)) {
                     return false;
                 }
 
                 $node->props['pagination_type'] = 'previous/next';
+                $node->props['pagination'] = [
+                    'previous' => $article->prev ? new PaginationObject($article->prev_label, '', null, $article->prev, true) : null,
+                    'next' => $article->next ? new PaginationObject($article->next_label, '', null, $article->next, true) : null,
+                ];
 
-            } else {
-
-                if ($params['pagination']->pagesTotal < 2) {
-                    return false;
-                }
-
-                $list = $params['pagination']->getPaginationPages();
+                return;
 
             }
 
-            $list['all']['active'] = false;
-            if (!$node->props['pagination_start_end']) {
-                $list['start']['active'] = false;
-                $list['end']['active'] = false;
+            // Article Index
+            if ($params['pagination']->pagesTotal < 2) {
+                return false;
             }
 
-            $pages = [];
-            foreach ($list as $key => $page) {
-                if ($key === 'pages') {
+            $list = $params['pagination']->getPaginationPages();
 
-                    $range = 3;
-                    $currentId = 0;
+            $total = $params['pagination']->pagesTotal;
+            $params['pagination']->pagesStop = $total;
+            $current = (int) $params['pagination']->pagesCurrent;
+            $endSize = 1;
+            $midSize = 3;
+            $dots = false;
 
-                    foreach ($list['pages'] as $id => $p) {
-                        if (!$p['active']) {
-                            $currentId = $id;
-                        }
+            $pagination = [];
+
+            if ($list['previous']['active']) {
+                $pagination['previous'] = $list['previous']['data'];
+            }
+
+            $list['start']['data']->text = 1;
+            $list['end']['data']->text = $total;
+
+            for ($n = 1; $n <= $total; $n++) {
+
+                $active = $n <= $endSize
+                    || $current && $n >= $current - $midSize && $n <= $current + $midSize
+                    || $n > $total - $endSize;
+
+                if ($active || $dots) {
+
+                    if ($active) {
+                        $pagination[$n] = $n === 1
+                            ? $list['start']['data']
+                            : ($n === $total
+                                ? $list['end']['data']
+                                : $list['pages'][$n]['data']);
+
+                        $pagination[$n]->active = $n === $current;
+                    } else {
+                        $pagination[$n] = new PaginationObject(Text::_('&hellip;', 'yootheme'));
                     }
 
-                    $pages = array_merge($pages, array_slice($list['pages'], max(0, $currentId - $range), $range * 2 + 1));
-                } elseif ($page['active']) {
-                    $pages[$key] = $page;
+                    $dots = $active;
                 }
+
             }
 
-            $node->props['pagination'] = array_map(function ($page) { return $page['data']; }, $pages);
+            if ($list['next']['active']) {
+                $pagination['next'] = $list['next']['data'];
+            }
+
+            $node->props['pagination'] = $pagination;
 
         },
 

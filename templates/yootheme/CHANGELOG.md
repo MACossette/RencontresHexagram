@@ -1,12 +1,70 @@
 # Changelog
 
+## 2.0.13 (May 12, 2020)
+
+### Changed
+
+- Automatically hide empty terms (WordPress)
+
+## 2.0.12 (May 07, 2020)
+
+### Fixed
+
+- Fix item alignment in masonry grid
+- Fix encoding of unicode strings
+
+## 2.0.11 (May 07, 2020)
+
+### Fixed
+
+- Fix broken customizer in non-English installations (WordPress)
+
+## 2.0.10 (May 06, 2020)
+
+### Fixed
+
+- Fix duplicated dropdown menu items
+
+## 2.0.9 (May 06, 2020)
+
+### Added
+
+- Add date format option to meta field
+
+### Changed
+
+- Change numbers on either start and end pagination edges to 3 (WordPress)
+
+### Removed
+
+- Remove Show Start/End links option from Pagination element
+
+### Fixed
+
+- Remove menu item active class for posts_page if currently on none blog page (WordPress)
+- Fix PHP 7.0 compatibility
+- Fix article field labeling/ordering (Joomla)
+- Fix Image does not collapse if attachment does not exist (WordPress)
+- Fix closing title html element in comment form (WordPress)
+- Fix `...` in Pagination no longer render as link
+- Fix title link in article meta name (Joomla)
+- Fix theme button on widgets edit screen (WordPress)
+- Fix default quantity option for Page Posts source (WordPress)
+- Fix missing show link option for Post Taxonomy String source (WordPress)
+- Fix duplicate content output on plugin pages (WordPress)
+- Fix display of date picker, date time picker, time picker ACF fields (WordPress)
+- Fix `YOOtheme Builder` media button (WordPress)
+- Fix columns setting for navbar items resulting in wrong number of columns
+- Fix tags field for category source (Joomla)
+- Fix collapsing behavior of button element
+
 ## 2.0.8 (April 22, 2020)
 
 ### Added
 
-- Add order by `Comment Count` for Custom Posts Query (WordPress)
+- Add order by comment count for Custom Posts Query (WordPress)
 - Add coordinates prop to GoogleMaps custom field (WordPress)
-- Add `limit` filter to ACF text fields (WordPress)
+- Add limit filter to ACF text fields (WordPress)
 - Add secondary text color as option to elements
 
 ### Changed

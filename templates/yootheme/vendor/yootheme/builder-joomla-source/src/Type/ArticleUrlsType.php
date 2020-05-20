@@ -9,64 +9,31 @@ class ArticleUrlsType
      */
     public function __invoke()
     {
-        $fields = [
+        $fields = [];
+        $resolvers = [];
 
-            'urla' => [
+        foreach (['a', 'b', 'c'] as $letter) {
+
+            $fields["url{$letter}"] = [
                 'type' => 'String',
                 'metadata' => [
-                    'label' => 'URL A',
+                    'label' => ucfirst($letter),
                 ],
-            ],
+            ];
 
-            'urlatext' => [
+            $fields["url{$letter}text"] = [
                 'type' => 'String',
                 'metadata' => [
-                    'label' => 'URL A Text',
+                    'label' => ucfirst($letter) . ' Text',
                     'filters' => ['limit'],
                 ],
-            ],
+            ];
 
-            'urlb' => [
-                'type' => 'String',
-                'metadata' => [
-                    'label' => 'URL B',
-                ],
-            ],
+            $resolvers["url{$letter}"] = function ($item, $args, $context, $info) {
+                return $item->{$info->fieldName} ?: '';
+            };
 
-            'urlbtext' => [
-                'type' => 'String',
-                'metadata' => [
-                    'label' => 'URL B Text',
-                    'filters' => ['limit'],
-                ],
-            ],
-
-            'urlc' => [
-                'type' => 'String',
-                'metadata' => [
-                    'label' => 'URL C',
-                ],
-            ],
-
-            'urlctext' => [
-                'type' => 'String',
-                'metadata' => [
-                    'label' => 'URL C Text',
-                    'filters' => ['limit'],
-                ],
-            ],
-
-        ];
-
-        $resolver = function ($item, $args, $context, $info) {
-            return $item->{$info->fieldName} ?: '';
-        };
-
-        $resolvers = [
-            'urla' => $resolver,
-            'urlb' => $resolver,
-            'urlc' => $resolver,
-        ];
+        }
 
         return compact('fields', 'resolvers');
     }

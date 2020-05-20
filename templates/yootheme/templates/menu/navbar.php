@@ -1,5 +1,7 @@
 <?php
 
+use YOOtheme\Arr;
+
 // Config
 $config->addAlias('~navbar', '~theme.navbar');
 
@@ -52,7 +54,7 @@ foreach (array_values($items) as $i => $item) {
             $attrs['class'][] = 'uk-nav-header';
         }
 
-    // Link
+        // Link
     } else {
 
         $link = [];
@@ -93,9 +95,6 @@ foreach (array_values($items) as $i => $item) {
 
         if ($level == 1) {
 
-            $parts = array_chunk($item->children, ceil(count($item->children) / $config('~menuitem.columns', 1)));
-            $count = count($parts);
-
             $children['class'][] = 'uk-navbar-dropdown';
 
             $click = ($item->type === 'header' || $item->type === 'custom' && $item->url === '#') && $mode = $config('~navbar.dropdown_click');
@@ -114,21 +113,27 @@ foreach (array_values($items) as $i => $item) {
                 ]));
             }
 
-            $columns = '';
+            $columns = Arr::columns($item->children, $config('~menuitem.columns', 1));
+            $columnsCount = count($columns);
 
-            foreach ($parts as $part) {
-                $columns .= "<div><ul class=\"uk-nav uk-navbar-dropdown-nav\">\n{$this->self(['items' => $part, 'level' => $level + 1])}</ul></div>";
+            $wrapper = [
+                'class' => [
+                    'uk-navbar-dropdown-grid',
+                    "uk-child-width-1-{$columnsCount}"
+                ],
+                'uk-grid' => true
+            ];
+
+            if ($columnsCount > 1 && !$justify) {
+                $children['class'][] = "uk-navbar-dropdown-width-{$columnsCount}";
             }
 
-            $wrapper = ['class' => ['uk-navbar-dropdown-grid'], 'uk-grid' => true];
-
-            if ($count > 1 && !$justify) {
-                $children['class'][] = "uk-navbar-dropdown-width-{$count}";
+            $columnsStr = '';
+            foreach ($columns as $column) {
+                $columnsStr .= "<div><ul class=\"uk-nav uk-navbar-dropdown-nav\">\n{$this->self(['items' => $column, 'level' => $level + 1])}</ul></div>";
             }
 
-            $wrapper['class'][] = "uk-child-width-1-{$count}";
-
-            $children = "{$indention}<div{$this->attrs($children)}><div{$this->attrs($wrapper)}>{$columns}</div></div>";
+            $children = "{$indention}<div{$this->attrs($children)}><div{$this->attrs($wrapper)}>{$columnsStr}</div></div>";
 
         } else {
 

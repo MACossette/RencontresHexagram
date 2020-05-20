@@ -7,7 +7,7 @@ return [
         'render' => function ($node) {
 
             // Don't render element if content fields are empty
-            return $node->props['content'] && ($node->props['link'] || $node->props['icon']);
+            return $node->props['link'] && ($node->props['content'] || $node->props['icon']);
 
         },
 

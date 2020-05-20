@@ -71,9 +71,7 @@
     "Color": "Farve",
     "Columns": "Spalter",
     "Columns Breakpoint": "Spalternes brydningspunkt",
-    "Compile CSS and JavaScript into a single file each to reduce file requests.": "Kompilér CSS og JavaScript til enkeltstående filer for at reducere serverens filanmodninger.",
     "Components": "Komponenter",
-    "Compression": "Komprimering",
     "Content": "Indhold",
     "Controls": "Styring",
     "Copy": "Kopiér",
@@ -210,10 +208,8 @@
     "Name": "Navn",
     "New Menu Item": "Nyt Menu Punkt",
     "New Module": "Nyt Modul",
-    "No elements found.": "Ingen elementer fundet.",
     "No files found.": "Ingen filer fundet",
     "No font found. Press enter if you are adding a custom font.": "Ingen skrifttype fundet. Tryk på enter hvis du er ved at tilføje en brugerdefineret skrifttype.",
     "No layout found.": "Intet layout fundet.",
-    "No menu items assigned.": "Ingen menu punkter tildelt.",
-    "Not available on this page. The builder can only be used on static pages. It does not work on blogs, shops or other dynamically generated content.": "Ikke tilgængeligt på denne side. Generatoren kan kun benyttes på statiske sider. Den virker ikke på blogs, butikker eller andet dynamisk genererede indhold."
+    "No menu items assigned.": "Ingen menu punkter tildelt."
 }

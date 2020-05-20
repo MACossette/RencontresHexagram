@@ -46,7 +46,7 @@ class CategoryType
             'params' => [
                 'type' => 'CategoryParams',
                 'metadata' => [
-                    'label' => 'Params',
+                    'label' => '',
                 ],
             ],
 
@@ -59,8 +59,48 @@ class CategoryType
 
             'tagString' => [
                 'type' => 'String',
+                'args' => [
+                    'separator' => [
+                        'type' => 'String',
+                    ],
+                    'show_link' => [
+                        'type' => 'Boolean',
+                    ],
+                    'link_style' => [
+                        'type' => 'String',
+                    ],
+                ],
                 'metadata' => [
                     'label' => 'Tags',
+                    'arguments' => [
+
+                        'separator' => [
+                            'label' => 'Separator',
+                            'description' => 'Set the separator between tags.',
+                            'default' => ', ',
+                        ],
+                        'show_link' => [
+                            'label' => 'Link',
+                            'type' => 'checkbox',
+                            'default' => true,
+                            'text' => 'Show link',
+                        ],
+                        'link_style' => [
+                            'label' => 'Link Style',
+                            'description' => 'Set the link style.',
+                            'type' => 'select',
+                            'default' => '',
+                            'options' => [
+                                'Default' => '',
+                                'Muted' => 'link-muted',
+                                'Text' => 'link-text',
+                                'Heading' => 'link-heading',
+                                'Reset' => 'link-reset',
+                            ],
+                            'enable' => 'arguments.show_link',
+                        ],
+
+                    ],
                 ],
             ],
 
@@ -155,6 +195,7 @@ class CategoryType
     public function tagString($category, array $args)
     {
         $tags = $this->tags($category);
+        $args += ['separator' => ', ', 'show_link' => true, 'link_style' => ''];
 
         return app(View::class)->render(Path::get('../../templates/tags'), compact('category', 'tags', 'args'));
     }

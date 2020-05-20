@@ -4,6 +4,40 @@ namespace YOOtheme;
 
 return [
 
+    '2.0.11.1' => function ($config) {
+        $style = Arr::get($config, 'style');
+
+        $mapping = [
+            'framerate:dark-blue' => 'framerate:black-blue',
+            'framerate:dark-lightblue' => 'framerate:dark-blue',
+            'joline:black-pink' => 'joline:dark-pink',
+            'max:black-black' => 'max:dark-black',
+        ];
+
+        if (array_key_exists($style, $mapping)) {
+            Arr::set($config, 'style', $mapping[$style]);
+        }
+
+        return $config;
+    },
+
+    '2.0.8.1' => function ($config) {
+        $style = Arr::get($config, 'style');
+
+        $mapping = [
+            'copper-hill:white-turquoise' => 'copper-hill:light-turquoise',
+            'florence:white-lilac' => 'florence:white-beige',
+            'pinewood-lake:white-green' => 'pinewood-lake:light-green',
+            'pinewood-lake:white-petrol' => 'pinewood-lake:light-petrol',
+        ];
+
+        if (array_key_exists($style, $mapping)) {
+            Arr::set($config, 'style', $mapping[$style]);
+        }
+
+        return $config;
+    },
+
     '2.0.0-beta.5.1' => function ($config) {
 
         foreach (['blog.width', 'post.width', 'header.width'] as $prop) {

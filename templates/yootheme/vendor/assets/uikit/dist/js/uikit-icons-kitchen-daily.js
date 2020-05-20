@@ -1,4 +1,4 @@
-/*! UIkit 3.4.2 | https://www.getuikit.com | (c) 2014 - 2020 YOOtheme | MIT License */
+/*! UIkit 3.4.6 | https://www.getuikit.com | (c) 2014 - 2020 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -158,8 +158,8 @@
         "close-large": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><line fill=\"none\" stroke=\"#000\" stroke-width=\"1.8\" x1=\"1\" y1=\"1\" x2=\"19\" y2=\"19\"/><line fill=\"none\" stroke=\"#000\" stroke-width=\"1.8\" x1=\"19\" y1=\"1\" x2=\"1\" y2=\"19\"/></svg>",
         "divider-icon": "<svg viewBox=\"0 0 10 10\" width=\"10\" height=\"10\" xmlns=\"http://www.w3.org/2000/svg\"><line fill=\"none\" stroke=\"#000\" stroke-width=\"1.1\" x1=\"0\" y1=\"0\" x2=\"10\" y2=\"10\"/><line fill=\"none\" stroke=\"#000\" stroke-width=\"1.1\" x1=\"10\" y1=\"0\" x2=\"0\" y2=\"10\"/></svg>",
         "marker": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\"><polygon fill=\"#000\" points=\"15,7.3 8.7,7.3 8.7,1 7.3,1 7.3,7.3 1,7.3 1,8.7 7.3,8.7 7.3,15 8.7,15 8.7,8.7 15,8.7\"/></svg>",
-        "slidenav-next-large": "<svg data-name=\"Ebene 1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"16\" viewBox=\"0 0 10 16\" data-svg=\"slidenav-next-large\"><polyline points=\"1.5 1.58 8.5 8.06 1.63 14.42\" fill=\"none\" stroke=\"#000\" stroke-miterlimit=\"10\" stroke-width=\"1.6\"/></svg>",
-        "slidenav-previous-large": "<svg data-name=\"Ebene 1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"16\" viewBox=\"0 0 10 16\" data-svg=\"slidenav-previous-large\"><polyline points=\"8.5 1.58 1.5 8.06 8.37 14.42\" fill=\"none\" stroke=\"#000\" stroke-miterlimit=\"10\" stroke-width=\"1.6\"/></svg>",
+        "slidenav-next-large": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"14\" viewBox=\"0 0 10 14\"><polyline points=\"1 0.6 8 7.08 1.13 13.44\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\"/></svg>",
+        "slidenav-previous-large": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"14\" viewBox=\"0 0 10 14\"><polyline points=\"9 0.6 2 7.08 8.87 13.44\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\"/></svg>",
         "totop": "<svg width=\"16\" height=\"18\" viewBox=\"0 0 16 18\" xmlns=\"http://www.w3.org/2000/svg\"><polygon points=\"15.7,7.9 14.3,9.3 9,4 9,17.5 7,17.5 7,4 1.7,9.3 0.3,7.9 8,0\"/></svg>"
     });
 

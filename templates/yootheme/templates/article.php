@@ -65,7 +65,7 @@ $imagetpl = function ($attr) use ($image, $params) {
 
 <article id="article-<?= $article->id ?>" class="uk-article"<?= $this->attrs(['data-permalink' => $permalink]) ?> typeof="Article">
 
-    <meta property="name" content="<?= $this->e($title) ?>">
+    <meta property="name" content="<?= $this->e(strip_tags($title)) ?>">
     <meta property="author" typeof="Person" content="<?= $this->e($article->author) ?>">
     <meta property="dateModified" content="<?= $this->date($article->modified, 'c') ?>">
     <meta property="datePublished" content="<?= $this->date($article->publish_up, 'c') ?>">

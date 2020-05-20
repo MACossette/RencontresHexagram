@@ -139,7 +139,13 @@ class FieldsType
 
     protected function resolveFieldArticles($field)
     {
-        return $this->resolveField($field, ArticleHelper::get($field->rawvalue));
+        $ordering = $field->fieldparams->get('articles_ordering', 'ordering');
+        $direction = $field->fieldparams->get('articles_ordering_direction', 'ASC');
+
+        return $this->resolveField($field, ArticleHelper::get($field->rawvalue, [
+            'list.ordering' => "a.{$ordering}",
+            'list.direction' => $direction,
+        ]));
     }
 
     protected function loadFieldRepeatable($field, array $config)
